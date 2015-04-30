@@ -1,5 +1,5 @@
 var MEME_SETTINGS = {
-  creditText: 'Source:', // Default "credits" text.
+  creditText: '- Matt Darvas', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
   fontColor: 'white', // Universal font color.
@@ -20,10 +20,10 @@ var MEME_SETTINGS = {
     {text: 'Large text', value: 36}
   ],
 
-  headlineText: 'Write your own headline', // Default headline text.
+  headlineText: '"Villages like this are routinely affected by landslides, and its not uncommon for entire villages of 200, 300, up to 1,000 people to be completely buried by rock falls" ', // Default headline text.
   height: 378, // Canvas rendering height.
   imageScale: 1, // Background image scale.
-  imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
+  imageSrc: 'http://localhost:4567/images/chi-earthquake-nepal-20150425-013.jpg', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
 
   // Image overlay color, or blank ('') for no overlay:
@@ -48,7 +48,7 @@ var MEME_SETTINGS = {
 
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("pictweet_logo_final.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...

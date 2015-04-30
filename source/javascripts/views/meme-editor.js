@@ -4,6 +4,7 @@
 */
 MEME.MemeEditorView = Backbone.View.extend({
 
+
   initialize: function() {
     this.buildForms();
     this.listenTo(this.model, 'change', this.render);
@@ -112,6 +113,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
   },
 
+  
+
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());
   },
@@ -144,5 +147,6 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
-  }
+  },
+  
 });

@@ -167,6 +167,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
       'download': (d.downloadName || 'share') + '.png'
     });
 
+
+    // $("#img1").click(function(){
+
+    //   this.model.imgageSrc = this.src;
+    //   //data= this.src ;
+    //   //alert("Image 1 clicked");
+    // })
+
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
   },
