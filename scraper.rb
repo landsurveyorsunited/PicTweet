@@ -15,6 +15,11 @@ doc.search('p').each do |p|
 	puts p.text
 end 
 
+doc.search('img').each do |img|
+	puts img['src']
+	puts ''
+end 
+
 
  
 # NOTE: This is completely from memory and untested, there may be bugs
