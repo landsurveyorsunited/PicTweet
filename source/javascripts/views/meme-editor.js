@@ -147,6 +147,6 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
-  },
+  }
   
 });
