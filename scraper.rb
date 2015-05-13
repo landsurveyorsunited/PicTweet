@@ -8,7 +8,11 @@ url = ARGV[0]
 
 #resource = NokoGiri::HTML(open(url))
  
-doc = Nokogiri::HTML(open(url)) 
+doc = Nokogiri::HTML(open(url))
+
+ unless OpenURI.redirectable?(url, redirect)
+    raise "redirection forbidden: #{uri} -> #{redirect}"
+  end
 # any news site should have only one h1 and the h1 should be their headline,
 # but who knows?
 doc.search('p').each do |p|
@@ -19,6 +23,14 @@ doc.search('img').each do |img|
 	puts img['src']
 	puts ''
 end 
+
+def OpenURI.redirectable?(url, url2) # :nodoc:
+  # This test is intended to forbid a redirection from http://... to
+  # file:///etc/passwd.
+  # However this is ad hoc.  It should be extensible/configurable.
+  url.scheme.downcase == url2.scheme.downcase ||
+  (/\A(?:http|ftp)\z/i =~ url.scheme && /\A(?:http|ftp)\z/i =~ url2.scheme)
+end
 
 
  
