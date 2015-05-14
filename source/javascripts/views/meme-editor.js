@@ -9,6 +9,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.buildForms();
     this.listenTo(this.model, 'change', this.render);
     this.render();
+    this.model.set('headlineText', "this text was generated from script");
+
   },
 
   // Builds all form options based on model option arrays:
@@ -73,6 +75,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
+    'change #submit ' : 'onSubmit',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
@@ -81,7 +84,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'drop #dropzone': 'onZoneDrop',
   },
 
   onCredit: function() {
@@ -89,7 +92,17 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onHeadline: function() {
-    this.model.set('headlineText', this.$('#headline').val());
+    //this.model.set('headlineText', this.$('#headline').val());
+    //alert("hi");
+  this.model.set('headlineText', this.$('#headline').val());
+  },
+
+  onSubmit: function() {
+    //this.model.set('headlineText', this.$('#headline').val());
+    var model=this.model;
+    alert("hi");
+    this.model.set('headlineText', "this text was generated when submit");
+    //this.model.set('headlineText', this.$('#headline').val());
   },
 
   onTextAlign: function() {
@@ -113,14 +126,18 @@ MEME.MemeEditorView = Backbone.View.extend({
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
   },
 
-  
-
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());
   },
 
   onOverlayColor: function(evt) {
     this.model.set('overlayColor', this.$(evt.target).val());
+  },
+  clicked: function(evt){
+    evt.preventDefault();
+    alert("prevented default");
+    this.model.set('headlineText', "this text");
+    // do your stuff here
   },
 
   getDataTransfer: function(evt) {
@@ -150,3 +167,8 @@ MEME.MemeEditorView = Backbone.View.extend({
   }
   
 });
+
+function fun(){
+alert("hi");
+
+}

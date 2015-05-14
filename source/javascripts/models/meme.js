@@ -29,8 +29,9 @@ MEME.MemeModel = Backbone.Model.extend({
     watermarkMaxWidthRatio: 0.25,
     watermarkSrc: '',
     watermarkOpts: [],
-    width: 755
+    width: 755, 
   },
+
 
   // Initialize with custom image members used for background and watermark:
   // These images will (sort of) behave like managed model fields.
@@ -77,6 +78,12 @@ MEME.MemeModel = Backbone.Model.extend({
   loadWatermark: function(file) {
     this.loadFileForImage(file, this.watermark);
   },
+  hi: function(){
+    var d = MEME.MemeModel.toJSON();
+    console.log(d.headlineText);
+    this.$('#headline').val("hi");
+    alert("hello");
+  },
 
   // When setting a new watermark "src",
   // this method looks through watermark options and finds the matching option.
@@ -96,4 +103,6 @@ MEME.MemeModel = Backbone.Model.extend({
     this.watermark.src = data;
     this.set('watermarkSrc', src);
   }
+    
 });
+
