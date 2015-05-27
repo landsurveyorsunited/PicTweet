@@ -82,6 +82,7 @@ MEME.MemeModel = Backbone.Model.extend({
     var d = MEME.MemeModel.toJSON();
     console.log(d.headlineText);
     this.$('#headline').val("hi");
+    this.set('headlineText', 'hi');
     alert("hello");
   },
 
@@ -102,7 +103,19 @@ MEME.MemeModel = Backbone.Model.extend({
 
     this.watermark.src = data;
     this.set('watermarkSrc', src);
+  },
+
+  bulkUpdate: function(obj) {
+    for (k in obj) {
+      //alert(k);
+      //alert(obj[k]);
+      this.set(k,obj[k]); // could try to set invalid properties, how careful do we need to be...
+      console.log(k);
+      console.log(k[obj]);
+    }
   }
-    
+   
+
 });
+
 

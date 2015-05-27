@@ -1,10 +1,19 @@
 MEME = {
   $: jQuery,
 
+
   render: function() {
     this.canvas && this.canvas.render();
   },
 
+  scrapeCallback: function(data,status,xhr) { // check arguments for JQuery Ajax callback
+    // do something to parse data
+    // make an object
+    obj = {
+     "headlineText": "",
+     }
+    this.model.bulkUpdate(obj);
+  },
   init: function() {
     this.model = new this.MemeModel(window.MEME_SETTINGS || {});
 
@@ -24,6 +33,7 @@ MEME = {
     this.waitForFonts().then(function() {
       MEME.render();
     });
+    this.scrapeCallback("hello");
   }
 };
 

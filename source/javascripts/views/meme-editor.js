@@ -9,7 +9,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.buildForms();
     this.listenTo(this.model, 'change', this.render);
     this.render();
-    this.model.set('headlineText', "this text was generated from script");
+    //this.model.set('headlineText', "this text was generated from script");
 
   },
 
@@ -100,7 +100,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   onSubmit: function() {
     //this.model.set('headlineText', this.$('#headline').val());
     var model=this.model;
-    alert("hi");
+    //alert("hi");
     this.model.set('headlineText', "this text was generated when submit");
     //this.model.set('headlineText', this.$('#headline').val());
   },
@@ -168,7 +168,3 @@ MEME.MemeEditorView = Backbone.View.extend({
   
 });
 
-function fun(){
-alert("hi");
-
-}

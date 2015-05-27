@@ -6,3 +6,4 @@
 //= require "views/meme-canvas"
 //= require "views/meme-editor"
 //= require "helpers/font-monitor"
+//= require "getImageData"

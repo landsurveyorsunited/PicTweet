@@ -1,5 +1,5 @@
 var MEME_SETTINGS = {
-  creditText: '- Matt Darvas', // Default "credits" text.
+  creditText: 'Source', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
   fontColor: 'white', // Universal font color.
@@ -23,7 +23,7 @@ var MEME_SETTINGS = {
   headlineText: 'halksjdhflakjdsh', // Default headline text.
   height: 378, // Canvas rendering height.
   imageScale: 1, // Background image scale.
-  imageSrc: 'http://localhost:4567/images/chi-earthquake-nepal-20150425-013.jpg', // Default background image path. MUST reside on host domain, or use base64 data.
+  imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
 
   // Image overlay color, or blank ('') for no overlay:
@@ -62,4 +62,39 @@ var MEME_SETTINGS = {
 };
 
 
+function fun(){
+
+  var nameValue = document.getElementById("url").value; // gets url from text box
+  //alert(nameValue);
+  // if we could get scraped data right here
+
+  // put it in model easily 
+  MEME.model.set("headlineText", "'Letterman was the most-watchable interviewer on network TV because he was the only one still capable of being dismayed by his guests.'");
+  MEME.model.set("imageSrc", "http://cdn.theatlantic.com/assets/media/img/mt/2015/05/AP8201190108/lead_960.jpg?GE2DGMRRGM2DIMBXFYYA====");
+  MEME.model.set("creditText", "- The Atlantic");
+  //MEME.model.loadBackground("http://cdn.theatlantic.com/assets/media/img/mt/2015/05/AP8201190108/lead_960.jpg?GE2DGMRRGM2DIMBXFYYA====");
+  //MEME.model.loadFileForImage("http://cdn.theatlantic.com/assets/media/img/mt/2015/05/AP8201190108/lead_960.jpg?GE2DGMRRGM2DIMBXFYYA====");
+
+  $.ajax({
+                 url: "<%= Rails.application.routes.scripts_controller %>", // Route to the Script Controller method
+                type: "GET",
+            dataType: "json",
+                data: { file_name: $(this).text() }, // This goes to Controller in params hash, i.e. params[:file_name]
+            complete: function() {},
+             success: function(data, textStatus, xhr) {
+                        // Do something with the response here
+                        editor.setValue(data.file_content) 
+                        alert("hi");
+                        // Show the file contents in our editor.
+                                                           // editor is defined somewhere above 
+                                                           // 'file_content' is the key we use to respond
+                                                           // in the controller function below
+                      },
+               error: function() {
+                        alert("Ajax error!");
+                      }
+    });
+
+
+}
 

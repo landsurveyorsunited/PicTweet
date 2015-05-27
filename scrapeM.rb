@@ -23,3 +23,15 @@ page.search('img').each do |img|
 	puts img['src']
 	puts ''
 end
+
+local_var = "Hello"
+
+def hello do 
+  local_var = "new hello"
+end
+
+hello
+
+class tweet 
+
+end 
