@@ -1,5 +1,5 @@
 var MEME_SETTINGS = {
-  creditText: 'Source', // Default "credits" text.
+  creditText: 'PicTweet', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
   fontColor: 'white', // Universal font color.
@@ -64,37 +64,77 @@ var MEME_SETTINGS = {
 
 function fun(){
 
-  var nameValue = document.getElementById("url").value; // gets url from text box
+  var a = document.getElementById("url").value; // gets url from text box
   //alert(nameValue);
   // if we could get scraped data right here
-
+  
   // put it in model easily 
-  MEME.model.set("headlineText", "'Letterman was the most-watchable interviewer on network TV because he was the only one still capable of being dismayed by his guests.'");
-  MEME.model.set("imageSrc", "http://cdn.theatlantic.com/assets/media/img/mt/2015/05/AP8201190108/lead_960.jpg?GE2DGMRRGM2DIMBXFYYA====");
-  MEME.model.set("creditText", "- The Atlantic");
+  //MEME.model.set("headlineText", "'I made a mistake as a young, impressionable police officer who was trying to fit in'");
+  //MEME.model.set("imageSrc", "https://cdn3.vox-cdn.com/thumbor/tqL5RLXO-qR9As8N29auS_uzj6M=/800x0/filters:no_upscale()/cdn0.vox-cdn.com/uploads/chorus_asset/file/3731870/cop%20antlers.png");
+  //MEME.model.set("creditText", '- Vox Media');
+
   //MEME.model.loadBackground("http://cdn.theatlantic.com/assets/media/img/mt/2015/05/AP8201190108/lead_960.jpg?GE2DGMRRGM2DIMBXFYYA====");
   //MEME.model.loadFileForImage("http://cdn.theatlantic.com/assets/media/img/mt/2015/05/AP8201190108/lead_960.jpg?GE2DGMRRGM2DIMBXFYYA====");
 
   $.ajax({
-                 url: "<%= Rails.application.routes.scripts_controller %>", // Route to the Script Controller method
+                 url: "http://127.0.0.1:5010/_add_numbers", // Route to the Script Controller method
                 type: "GET",
             dataType: "json",
-                data: { file_name: $(this).text() }, // This goes to Controller in params hash, i.e. params[:file_name]
-            complete: function() {},
+                data: {a}, // This goes to Controller in params hash, i.e. params[:file_name]
+            complete: function() {
+              //alert("hi");
+              // update model here 
+              //alert(data.result);
+              //console.log(data)
+            },
              success: function(data, textStatus, xhr) {
                         // Do something with the response here
-                        editor.setValue(data.file_content) 
-                        alert("hi");
+                        //alert(data);
+                        //alert("hi");
                         // Show the file contents in our editor.
-                                                           // editor is defined somewhere above 
+                      alert(data.result); 
+                      alert(data.linke);                                    // editor is defined somewhere above 
                                                            // 'file_content' is the key we use to respond
                                                            // in the controller function below
+                       // $('#headline').val(data.result);
+                       // MEME.model.set('headlineText', MEME.$('#headline').val());
+                       MEME.model.set("headlineText", data.result);
+                       //MEME.MemeEditorView.onHeadline();
+                       MEME.model.set("imageSrc", data.linke);
+                       
                       },
                error: function() {
-                        alert("Ajax error!");
+                        //alert("Ajax error!");
+
                       }
     });
 
+  // $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+    $('a#calculate').bind('click', function() {
+      //var url= $('input[name="a"]').val()
+      // $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+      //   a : url
+      // }
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+        a: $('input[name="a"]').val(),
+        //b: $('input[name="b"]').val()
+      }
+      , function(data) {
+          alert(data)
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+    
+ 
+
+
 
 }
-
+function fun1(){
+  MEME.render();
+  //MEME.MemeEditorView.onHeadline();
+  alert("hello");
+  //MEME.model.set('headlineText', $('#headline').val());
+}

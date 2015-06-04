@@ -9,3 +9,43 @@
 @import 'modules/m-canvas';
 @import 'modules/m-editor';
 @import 'modules/forms';
+@import url('http://getbootstrap.com/dist/css/bootstrap.css');
+
+body {
+	padding: 0;
+	background-image: url("../images/concrete_seamless.png");
+}
+
+.input-group{
+	width: 750px; 
+}
+
+#url {
+
+}
+
+#meme-canvas-view{
+	float: left;
+}
+
+#button1{
+float:right; 
+background-color: #2980b9;
+border: 1px solid #ccc;
+border-radius: 4px;
+color: #fff;
+
+}
+.blue {
+background-color: #2980b9;
+color: #fff;
+}
+
+#content1 {
+
+float: left;
+padding: 15px;
+text-align: center;
+width: 100%;
+
+}

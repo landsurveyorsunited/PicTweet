@@ -3,17 +3,30 @@
   <head>
     <%= partial "partials/head" %>
   </head>
-  <button onclick="fun()">Create</button>
-  <body class="<%= page_classes %>">
-    <div class="m-meme">
-      <h3>PicTweet</h3>
-      <form action="">
-      <textarea id ="url"name="comments" cols="1" rows="1">Paste Article URL here...</textarea>
-      
-    </form>
-      <%= partial "partials/editor" %>
-      <%= partial "partials/canvas" %>
+  
+  <body>
+
+    <div class="container content1">
+      <div class="navbar-header">
+          <img width= "400px"alt="Brand" src="../images/logo-res.png"> 
+      </div>
+
     </div>
+
+    <div class="container">
+    <div class="input-group">
+    <textarea id ="url"class="form-control custom-control custom" cols="50" rows="1"style="resize:none"></textarea> <span class="input-group-addon btn btn-primary blue" onclick="fun()">Send</span>
+    </div>
+    <div class="m-meme">
+      <!-- <textarea id ="url1"name="comments" cols="50" rows="1">Paste Article URL here...</textarea> --> 
+      
+      <%= partial "partials/editor" %>
+      <button id="button1" onclick="fun1()">Update Quote</button>
+      <%= partial "partials/canvas" %>
+
+    </div>
+
+  </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'settings' %>
 
