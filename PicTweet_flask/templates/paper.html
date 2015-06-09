@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% block body %}
+<input id="paper-id1" class="hide" type="text" value='{{ paper1["id"] }}'>
+<input id="paper-id2" class="hide" type="text" value='{{ paper2["id"] }}'>
+<input id="username" class="hide" type="text" value='{{ user }}'>
+
+<div id="left-column">
+  <section>
+    <span class="label">Toggle View:</span>
+      <span class="value">
+        <a href="#" id="toggle-to-text">Text</a> / 
+        <a href="#" id="toggle-to-pdf">PDF</a>
+      </span>
+    <h2 id="kp-user-num">Key Phrases</h2>
+    <div>
+        <ul class="square" id="kp-list">
+
+        </ul>
+    </div>
+  </section>
+  <section>
+    <h2>Info</h2>
+    <div>
+        <span class="label">ID_1:</span>
+        <span class="value">{{ paper1["id"] }}</span>
+        <br />
+        <span class="label">ID_2:</span>
+        <span class="value">{{ paper2["id"] }}</span>
+        <br />
+
+        <!-- <span class="label">Title:</class>
+        <span class="value">{{ paper1["title"] }}</span> -->
+
+        <!-- <span class="label">Annotators:</class>
+        <span class="value">10 people</span> -->
+
+        <span class="label">Keyphrases:</span>
+        <span class="value" id="kp-all-num">10 annotated</span>
+        <br />
+        <span class="label">PDF 1:</span>
+        <span class="value"><a target="_blank" href="http://www.aclweb.org/anthology/{{ paper1['id'] }}">View</a></span>
+        <br>
+        <span class="label">PDF 2:</span>
+        <span class="value"><a target="_blank" href="http://www.aclweb.org/anthology/{{ paper2['id'] }}">View</a></span>
+    </div>
+  </section>
+  <section>
+    <h2>Nav</h2>
+    <span class="nav"><a href="{{ url_for('random_paper') }}">Random Paper</a></span>
+    <span class="nav"><a href="#">My Annotation</a></span>
+    <!-- <span class="nav"><a target="_blank" href="#">Inspect Clusters</a></span> -->
+  </section>
+</div> <!-- end left-column -->
+
+<div id="right-column">
+  <section>
+    <h2>  Choose a suitable option : </h2> <br>
+
+    <div>
+      <input tabindex="1" type="text" id="kp-input" placeholder="Choose a correct option"/>
+    </div>
+      <div>
+        <h3> Are the two abstracts similar?</h3> <br>
+        <form>
+          <input type="radio" name="check" value="yes">Yes<br>
+          <input type="radio" name="check" value="no">No<br> <br>
+          <input tabindex="1" type="text" id="kp-input" placeholder="Explain the similarity "/>
+          <input type="submit" id="submit" value="Submit">
+        </form>
+      </div>
+    <br />
+  </section>
+  <section>
+    <h2>Related Key phrases</h2>
+    <div id="empty-related-kp">Add or select a key phrase to see related key phrases.</div>
+    <div id="related-kp">
+      <div>Search for: <span id="current-kp"></span> </div>
+      <div id="no-related-kp"><br />There is no related key phrase.</div>
+      <div id="related-kp-list">
+      </div>
+    </div>
+  </section>
+</div>  <!-- end right-column -->
+
+<div id="content-column">
+  <div class="paper-pdf">
+    <iframe frameborder="0" height="100%" width="100%" src="http://www.aclweb.org/anthology/{{ paper1['id'] }}"></iframe>
+  </div>
+  <div class="paper-area">
+    <section class="persist-area" id="title-header">
+      <div class="persist-header"><span class="h2">Paper 1</span></div><a class="hidden" name="paper_title"></a>
+      {{ paper1["title"] }}
+    </section>
+
+    <!-- <section class="persist-area">
+      <div class="persist-header"><span class="h2">Citation Contexts</span></div><a class="hidden" name="paper_citation"></a>
+      <ul class="square">
+      {% for citation in paper1["citations"] %}
+        <li>{{ citation }}</li>
+      {% endfor %}
+      </ul>
+    </section> -->
+    <section class="persist-area">
+      <div class="persist-header"><span class="h2">Abstract</span></div><a class="hidden" name="paper_abstr"></a>
+      {{ paper1["abstr"] }}
+    </section>
+  </div>
+    
+  <div class="paper-pdf">
+    <iframe frameborder="0" height="100%" width="100%" src="http://www.aclweb.org/anthology/{{ paper2['id'] }}"></iframe>
+  </div>
+  <div class="paper-area">
+    <section class="persist-area" id="title-header">
+      <div class="persist-header"><span class="h2">Paper 2</span></div><a class="hidden" name="paper_title"></a>
+      {{ paper2["title"] }}
+    </section>
+    <section class="persist-area">
+      <div class="persist-header"><span class="h2">Abstract</span></div><a class="hidden" name="paper_abstr"></a>
+      {{ paper2["abstr"] }}
+    </section>
+  </div>
+    
+    <!-- <section class="persist-area">
+      <div class="persist-header"><span class="h2">Body</span></div><a class="hidden" name="paper_body"></a>
+      {{ paper1["body"] }}
+    </section> -->
+  
+</div>  <!-- end content-column -->
+{% endblock %}
+{% block script %}
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/kpa.css') }}">
+<script src="{{ url_for('static', filename='js/jquery.autocomplete.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hideMaxListItem.js') }}"></script>
+<script src="{{ url_for('static', filename='js/paper.js') }}"></script>
+{% endblock %}

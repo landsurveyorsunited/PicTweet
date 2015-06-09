@@ -1,0 +1,221 @@
+/* layout template */
+html,body {
+    line-height: 1;
+    font-size:medium;
+    font-family: sans-serif;
+    margin:0 auto;
+    padding:0;
+    font-weight:300;
+    height: 100%;
+    text-align: center;
+}
+
+b{
+    font-weight: bold;
+}
+/* header and footer */
+header{
+    text-align: left;
+    display: block;
+    border-bottom: 1px solid silver;
+    padding: 5px;
+}
+header #logo{
+    /*width: 400px;*/
+    margin-right: 80px;
+}
+header a, header a:link, header a:visited, header a:hover, header a:active{
+    text-decoration: none;
+    border: none;
+}
+
+header #logo a span#logo-title{
+    position: relative;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 0px 0px 0px 0px;
+    color: #555;
+    top:22px;
+}
+
+header #logo a img{
+    width: 60px;
+    height: auto;
+    float: left;
+    display: block;
+    position: relative;
+}
+/* WebSAIL Logo */
+header #websail{
+    display: block;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    font-size: 12pt;
+    color: white;
+    float: right;
+    text-align: right;
+    background-color: #555;
+    width: 57px;
+    height: 57px;
+    padding: 3px;
+    font-family: Verdana;
+}
+
+header #websail span#websail-web, header #websail span#websail-sail{
+    display: block;
+    position: relative;
+    float: right;
+    top: 16px;
+}
+
+header #websail span#websail-ai{
+    display: inline;
+    font-size: 120%;
+    font-weight: 500;
+}
+/* WebSAIL Logo */
+footer{
+    position: relative;
+    margin-top: -30px;
+    height: 40px;
+    clear:both;
+    display: block;
+    text-align: right;
+    color: #666;
+    font-size: 12pt;
+    padding: 10px 10px 0px 0px;
+    border-top: 1px solid silver;
+}
+footer a{
+    text-decoration: none;
+    color: #666 !important;
+}
+/* end header and footer */
+
+div.center{
+    min-width: 800px;
+    height: 100%;
+    text-align: left;
+    margin: 0 auto;
+    
+}
+
+#content-container {
+    text-align:left;
+    color:#555;
+    display:block;
+    font-size:95%;
+    line-height:135%;
+    margin-bottom:40px;
+    min-height: 85%;
+    padding-top: 10px;
+}
+
+/* section */
+section {
+    /*padding: 10px 10px 20px 10px;*/
+    border-bottom:dashed 1px silver;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    /*margin: 0px 10px 0px 10px;*/
+}
+
+section:first-child {
+    /*padding-top: 0px;*/
+}
+
+section:last-child {
+    border-bottom:none;
+}
+
+section h2, section span.h2{
+    font-size: 120%;
+    padding-bottom:5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #555;
+}
+
+section h3 {
+    font-size: 110%;
+    padding-bottom:5px;
+    font-weight: 400;
+}
+
+section p {
+    padding: 0px 0px 0px 10px;
+    margin-bottom: 10px;
+}
+
+section p:last-child{
+    margin-bottom: 0px;
+}
+
+div.article_section{
+    padding: 10px 0px 10px 0px;
+}
+/* end section */
+
+a, a:link,  a:visited,  a:hover, a:active{
+    text-decoration: none;
+    border-bottom: 1px dashed silver;    
+}
+
+ul.square {
+    padding-left: 20px;
+}
+
+ul.square li{
+    display: list-item;
+    list-style: square outside none;
+    margin-left: 5px;
+}
+
+pre.code {
+    font-family: monospace;
+    border: 1px solid silver;
+    padding: 5px;
+    margin: 5px 20px 5px 20px;
+}
+
+.clear{
+    clear:both;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.hide{
+    display: none !important;
+}
+.italic{
+    font-style: italic;
+}
+
+.code {
+    font-family: monospace;
+}
+
+.green{
+    color: rgb(021, 167, 041);
+}
+
+.delete-text-btn{
+    cursor: pointer;
+}
+
+.delete-text-btn:hover{
+    color: red;
+}
+
+/* end layout template */
+
+
+
+
+
+
+

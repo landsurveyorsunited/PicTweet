@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.hovertable {
+  
+  font-size:13px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+td{
+  
+  border-style: solid;
+  border-color: #a9c6c9;
+  border: 1px solid #000000; 
+  height: 100% ; 
+  padding : 3px; 
+  background-color: #d4e3e5;
+}
+
+td.cell{
+  font-family: "Lucida Console", Monaco, monospace;
+  color: blue;
+
+}
+
+span.result{
+   
+    display: block;
+    padding-left: 10px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    font-style: italic; 
+    color: #0066FF; 
+    font-family:arial; 
+    font-size: 16px; 
+
+
+}
+
+td.clicked{
+  background-color: #EE9572;
+}
+td.highlight{
+  background-color: yellow ;
+}
+
+</style>
+
+<script type=text/javascript>
+  // $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  $(function() {
+    $('a#calculate').bind('click', function() {
+      //var url= $('input[name="a"]').val()
+      // $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+      //   a : url
+      // }
+      $.getJSON($SCRIPT_ROOT + '/_add_numbers', {
+        a: $('input[name="a"]').val(),
+        //b: $('input[name="b"]').val()
+      }
+      , function(data) {
+          alert(data.result)
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+  });
+</script>
+<div id="left-column">
+
+
+<p><input type=text size=10 name=a>
+   <span id="result">?</span>
+<p><a href=# id="calculate">calculate server side</a>
+</div>
+
+<div id="right-column">
+  <section>
+    
+  </section>
+
+  
+</div>  <!-- end right-column -->
+
+
+
+
+{% endblock %}
+{% block script %}
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/topic.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='js/topic.js') }}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+{% endblock %}
+
+<!-- // $.getJSON($SCRIPT_ROOT + '/restartajax/'+item, {
+        // }, function(data) {
+        //       $("span.result").append(count+". ");
+        //       $("span.result").append(data.result);
+        //       $("span.result").append("<br>");
+        // });
+        // ajax
+        var paper = $("span.result").attr('name');
+        alert(arr)
+      $.getJSON($SCRIPT_ROOT + '/update_table/'+item+paper, {
+        }, function(data) {
+
+              alert(data.result)
+        }); -->
+
+<!-- 
+        //to output the word and its row
+    // for(var i=0;i<arr.length;i++){
+    //   alert("Row : "  + arr[i].row + " Word :  "  + arr[i].word);
+    // } -->

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<title>ITM</title>
+<meta charset='UTF-8'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+</script>
+<script src="{{ url_for('static', filename='js/jquery.autocomplete.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hideMaxListItem.js') }}"></script>
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/reset.css') }}">
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/common.css') }}">
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/kpa.css') }}">
+
+{% block meta %}{% endblock %}
+</head>
+<body>
+<div class='center'>
+  <header>
+    <a href="http://websail.cs.northwestern.edu">
+      <div id="websail">
+        <span id="websail-web">M</span>
+        <span id="websail-sail"><span id="websail-ai">I</span><span>T</span></span>
+      </div>
+    </a>
+    <div id="logo">
+      <a href="#">
+        <span id="logo-title">Interactive Topic Modeling</span>
+      </a>
+    </div>
+    <div class="clear"></div>
+  </header>
+  <div id="content-container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flashes">
+      <span id="flashes-close">x</span>
+      <ul class="square">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  {% endwith %}
+  {% block body %}{% endblock %}
+  </div>
+  <footer>
+    <a href="http://websail.cs.northwestern.edu">ITM</a> | 
+    <a href="http://eecs.northwestern.edu">EECS</a> | 
+    <a href="http://www.northwestern.edu">Northwestern University</a> 
+  </footer>
+</div>
+<script src="{{ url_for('static', filename='js/jquery-1.11.2.min.js') }}"></script>
+<script type="text/javascript">
+  
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  $(document).ready(function(){
+    $("#flashes-close").click(function(e){
+      $(e.target).parent().hide();
+    })
+  })
+</script>
+{% block script %}{% endblock %}
+</body>
+</html>

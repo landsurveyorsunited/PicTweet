@@ -18,8 +18,8 @@ Installation and Usage
 - Install Rails and make sure all of the ruby gems are downloaded using ‘bundle install’ 
 - Install Python and all package dependencies
 - Clone this repository
-- Run ‘bundle exec middleman’ from within the Rails project to spin up the local server for the front-end
-- Run ‘python main.py’ to spin up the Flask server on localhost
+- Run ‘bundle exec middleman’ to spin up the local server for the front-end
+- Run ‘python main.py’ *from within PicTweet_flask directory* to spin up the Flask server on localhost
 - To alter the quote selection algorithm, look at the api.py file 
 - The AJAX call from the Rails app to the Flask server is made in the settings.erb.js file in the Rails app
 - Note that future iterations of this project would be enhanced by placing the functionality of the Flask server into the Rails application

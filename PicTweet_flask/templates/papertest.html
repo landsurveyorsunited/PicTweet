@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+<input id="paper-id1" class="hide" type="text" value='{{ paper1["id"] }}'>
+<input id="paper-id2" class="hide" type="text" value='{{ paper2["id"] }}'>
+<input id="username" class="hide" type="text" value='{{ user }}'>
+{{ paper1["abstr"] }}
+
+
+
+
+
+
+
+
+
+
+
+aaaaaaa
+
+
+
+{{ paper2["abstr"] }}
+
+
+
+
+
+
+{% endblock %}
+{% block script %}
+<script src="{{ url_for('static', filename='js/jquery.autocomplete.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/hideMaxListItem.js') }}"></script>
+<script src="{{ url_for('static', filename='js/paper.js') }}"></script>
+{% endblock %}

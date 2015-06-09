@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="login">
+  <div>
+    <h2>What is your name?</h2>
+    {% if error %}<p class="error">{{ error }}{% endif %}</p>
+    <form action="{{ url_for('login') }}" method="post">
+      <input type="text" name="username">
+      <input type=hidden value="{{ next or '' }}" name=next>
+      <input type="submit" value="Login">
+    </form>  
+  </div>
+<section>
+{% endblock %}
