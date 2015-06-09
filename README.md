@@ -1,41 +1,35 @@
-# Meme v.2
+PicTweet Documentation 
 
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart, Greg MacWilliam.
+Overview
+=========
 
-Meme is a generator that Vox Media uses to create social sharing images. See working version at [http://www.sbnation.com/a/meme](http://www.sbnation.com/a/meme).
+PicTweet is a tool that allows a user to upload a URL from an online media outlet and have a meme generated from an image on the site and a quote chosen by our algorithm based on relevance. The front-end is made using a combination of Ruby on Rails and Backbone.js, and calls are made to a Python Flask server. We are using some of Vox Media’s meme generator code for this project.
 
-![screenshot](readme.png)
+To best understand this application, you should:
+- Read about the usage of Rails + Backbone.js
+- Specifically, take a look at the documentation for Backbone MVC to see how we built the front end
+- Look through the api.py file to view the algorithm that parses the article and chooses which quote to show on the meme
 
-## What's new in version 2.0?
+This is a prototype and Work In Progress, so there are definitely improvements to be made in the code. 
 
-* Refactored into a formal MV* app.
-* Fixed bugs with rendering state and repeat drag-n-drop images.
-* Improved initial rendering with loaded web fonts.
-* Improved cross-origin options: both for base64 images and CORS.
-* Highly (and easily!) customizable editor and theme options.
-* Watermark selector.
+Installation and Usage
+=========
 
-## Install
+- Install Rails and make sure all of the ruby gems are downloaded using ‘bundle install’ 
+- Install Python and all package dependencies
+- Clone this repository
+- Run ‘bundle exec middleman’ from within the Rails project to spin up the local server for the front-end
+- Run ‘python main.py’ to spin up the Flask server on localhost
+- To alter the quote selection algorithm, look at the api.py file 
+- The AJAX call from the Rails app to the Flask server is made in the settings.erb.js file in the Rails app
+- Note that future iterations of this project would be enhanced by placing the functionality of the Flask server into the Rails application
 
-* `git clone https://github.com/voxmedia/meme.git`
-* `bundle install`
-* `bundle exec middleman`
+Development
+=========
 
-This will start a local web server running at: `http://localhost:4567/`
+- app.logger.info is essential to debugging on the Flask server 
+- You may run into problems with the AJAX request from one local-server to another using a browser besides Chrome
 
-## Customization
-
-### Configuration
-
-Settings and controls are configured through `source/javascripts/settings.js.erb`. The [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb) has ample comments to document configuration.
-
-### Fonts
-
-Include your own fonts in `stylesheets/_fonts.scss`, then add your font options into the [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb#L12).
-
-### Editor theme
-
-Set the [theme-color variable](https://github.com/voxmedia/meme/blob/master/source/stylesheets/_vars.scss#L3) in `source/stylesheets/_vars.scss`. That one color will be tinted across all editor controls.
 
 ## Cross-Origin Resources (CORS)
 
@@ -47,17 +41,4 @@ If you're hosting this application on the same domain that serves your images, t
 
 2. Embed all of your watermark images as base64 data URIs within the `settings.js.erb` file. The asset pipeline's `asset_data_uri` helper method makes this very easy, and effectively embeds all image data within your JavaScript. The downside here is that your JavaScript will become a very large payload as you include more images. In the long term, getting CORS headers configured will be a better option.
 
-## Examples
 
-* http://www.sbnation.com/a/meme
-* https://twitter.com/voxdotcom/status/481671889094340608
-* https://twitter.com/voxdotcom/status/479228288221470721
-* https://twitter.com/voxdotcom/status/481619042545844225
-
-## Contributing
-
-1. Fork it ( https://github.com/voxmedia/meme/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
